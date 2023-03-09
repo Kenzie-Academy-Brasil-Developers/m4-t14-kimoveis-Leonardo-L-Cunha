@@ -13,9 +13,9 @@ const listAllRealEstateService = async():Promise<IrealEstateWithAddress> => {
         }
     })
 
-    const listRealEstate = RealEstateWithAddress.parse(listAllRealEstate)
+    const listAllWithAddress = RealEstateWithAddress.parse(listAllRealEstate)
     
-    return listRealEstate
+    return listAllWithAddress
 }
 
 export default listAllRealEstateService

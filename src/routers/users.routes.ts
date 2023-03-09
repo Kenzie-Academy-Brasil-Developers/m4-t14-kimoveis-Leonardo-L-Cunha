@@ -12,6 +12,6 @@ const userRoutes:Router = Router()
 
 userRoutes.post('',ensureDataIsValid(CreateUserSchema),verifyEmailExists,createUsersControllers)
 userRoutes.get('',ensureTokenIsValid,verifyIfIsAdmin,listUsersControllers)
-userRoutes.patch('/:id',ensureTokenIsValid,verifyUserExists,ensureDataIsValid(UpdateUsersShema),ensureAtLeastADate,verifyIsAdminPatchnDelete,verifyEmailExists,updateUsersControllers)
+userRoutes.patch('/:id',ensureTokenIsValid,verifyUserExists,verifyIsAdminPatchnDelete,ensureDataIsValid(UpdateUsersShema),ensureAtLeastADate,verifyEmailExists,updateUsersControllers)
 userRoutes.delete('/:id',ensureTokenIsValid,verifyUserExists,verifyIfIsAdmin,deleteUsersControllers)
 export default userRoutes

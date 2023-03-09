@@ -24,15 +24,24 @@ const CompleteRealEstateSchema = CreateRealEstateSchema.extend({
     address: createAddressesSchema
 })
 
-const ReturnCompleteRealEstateSchema = RealEstateSchema.extend({
+const ReturnCompleteRealEstateSchema = z.object({
+    id: z.number(),
+    sold: z.boolean().optional().default(false),
+    value: z.number().or(z.string()),
+    size: z.number().int().gte(1,{
+        message: 'Number must be greater than 0',
+    }),
+    createdAt: z.date().or(z.string()),
+    updatedAt: z.date().or(z.string()),
     category: CategoriesSchema,
     address: AddressesSchema
+    
 })
 
 const RealEstateWithAddress = RealEstateSchema.extend({
     address: AddressesSchema
 
-})
+}).array()
 
 export {
     RealEstateSchema,

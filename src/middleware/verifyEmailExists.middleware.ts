@@ -7,16 +7,19 @@ import { AppError } from '../error'
 const verifyEmailExists = async (req:Request, res:Response, next:NextFunction):Promise<Response | void> => {
     const { email } = req.body
     const userRepository  = AppDataSource.getRepository(User)
-   
-    const findEmail:Array<User> = await userRepository.find()
-
-    const verifyEmail = findEmail.find((user) => {
-        return user.email == email
-    })
-
-    if(verifyEmail){
-        throw new AppError('Email already exists',409)
+    
+    if(email){
+        const findEmail:User | null = await userRepository.findOne({
+            where:{
+                email: email
+            }
+        })
+    
+        if(findEmail){
+            throw new AppError('Email already exists',409)
+        }
     }
+    
    
     return next()
 }

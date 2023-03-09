@@ -10,11 +10,11 @@ const createRealEstateController = async(req:Request, res:Response):Promise<Resp
 
     return res.status(201).json(newRealEstate)
 }
-const listAllRealEstateCOntroller = async(req:Request, res:Response):Promise<Response> => {
+const listAllRealEstateController = async(req:Request, res:Response):Promise<Response> => {
     const listAllRealEstate = await listAllRealEstateService()
     return res.json(listAllRealEstate)
 }
 export {
     createRealEstateController,
-    listAllRealEstateCOntroller
+    listAllRealEstateController
 }

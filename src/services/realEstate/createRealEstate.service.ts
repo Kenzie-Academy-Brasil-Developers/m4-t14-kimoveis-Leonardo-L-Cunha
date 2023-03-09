@@ -4,7 +4,8 @@ import { Address, Category, RealEstate } from '../../entities'
 import { AppError } from '../../error'
 import { IaddressesCreate } from '../../interfaces/addresses.interfaces'
 import { IcompleteRealEstate, IreturnCompleteRealEstate } from '../../interfaces/realEstate.interfaces'
-import { ReturnCompleteRealEstateSchema } from '../../schema/realEstate.schema'
+import { CompleteRealEstateSchema, ReturnCompleteRealEstateSchema } from '../../schema/realEstate.schema'
+
 
 const createRealEstateService = async(realEstateData:IcompleteRealEstate):Promise<IreturnCompleteRealEstate> => {
   
@@ -57,25 +58,14 @@ const createRealEstateService = async(realEstateData:IcompleteRealEstate):Promis
     const newRealEstate:RealEstate = realEstateRepository.create({
         ...realEstate,
         address: newAddres,
-        category:findCategory
+        category:{...findCategory}
     })
     
     await realEstateRepository.save(newRealEstate)
-
-    const completeRealEstate = {
-        ...newRealEstate,
-        category : {
-            id: findCategory.id,
-            name: findCategory.name
-        },
-        address: newAddres
-
-    }
     
-    const returnCompleteRealEstate = ReturnCompleteRealEstateSchema.parse(completeRealEstate) 
-
     
-    return returnCompleteRealEstate
+    
+    return newRealEstate
 
 }
 
