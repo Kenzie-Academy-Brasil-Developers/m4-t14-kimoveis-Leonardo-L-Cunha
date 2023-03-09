@@ -4,7 +4,6 @@ import { RealEstate, Schedule, User } from '../../entities'
 import { AppError } from '../../error'
 import { IscheduleCreate } from '../../interfaces/schedules.interfaces'
 
-
 const createScheduleService = async(scheduleData:IscheduleCreate, idUser:number):Promise<string> => {
     const userRepository:Repository<User> = AppDataSource.getRepository(User)
     const realEstateRepository:Repository<RealEstate> = AppDataSource.getRepository(RealEstate)

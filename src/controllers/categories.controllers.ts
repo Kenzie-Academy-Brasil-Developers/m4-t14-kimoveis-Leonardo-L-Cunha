@@ -19,6 +19,7 @@ const listCategoriesController = async (req:Request, res:Response):Promise<Respo
     return res.json(listCategories)
 }
 const listRealEstatePerCategories = async (req:Request, res:Response):Promise<Response> => {
+    
     const listRealEstatePerCategories = await listRealEstatePerCategoriesService(parseInt(req.params.id))
     
     return res.json(listRealEstatePerCategories)

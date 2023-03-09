@@ -1,5 +1,14 @@
-import { Entity, Column ,  PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToOne, JoinColumn, ManyToOne, OneToMany } from 'typeorm'
-import { nullable } from 'zod'
+import { 
+    Entity, 
+    Column,  
+    PrimaryGeneratedColumn, 
+    CreateDateColumn, 
+    UpdateDateColumn, 
+    OneToOne, 
+    JoinColumn, 
+    ManyToOne, 
+    OneToMany 
+} from 'typeorm'
 import  Addresses  from './addresses.entities'
 import  Categories  from './categories.entities'
 import Schedule from './schedulesUsersProperties.entities'

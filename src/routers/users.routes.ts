@@ -1,5 +1,10 @@
 import { Router } from 'express'
-import { createUsersControllers, deleteUsersControllers, listUsersControllers, updateUsersControllers } from '../controllers/users.controllers'
+import { 
+    createUsersControllers, 
+    deleteUsersControllers, 
+    listUsersControllers, 
+    updateUsersControllers 
+} from '../controllers/users.controllers'
 import ensureAtLeastADate from '../middleware/ensureAtLeastADate.middleware'
 import ensureDataIsValid from '../middleware/ensureDataIsValid.middleware'
 import ensureTokenIsValid from '../middleware/ensureTokenIsValid.middleware'

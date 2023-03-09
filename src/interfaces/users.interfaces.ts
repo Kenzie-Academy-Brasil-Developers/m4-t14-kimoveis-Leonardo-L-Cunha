@@ -1,4 +1,4 @@
-import { UserSchema, CreateUserSchema, returnUserSchema , returnAllUserSchema,UpdateUsersShema} from '../schema/users.schema' 
+import { CreateUserSchema, returnUserSchema , returnAllUserSchema,UpdateUsersShema} from '../schema/users.schema' 
 import { z }  from 'zod'
 import { DeepPartial } from 'typeorm'
 

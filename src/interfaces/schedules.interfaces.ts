@@ -1,4 +1,9 @@
-import { ScheduleCreateSchema,ScheduleSchema, ScheduleSchemaComplete, ScheduleRealEstateComplete } from '../schema/schudulesUsersProperties.schema'
+import {
+    ScheduleCreateSchema,
+    ScheduleSchema, 
+    ScheduleSchemaComplete, 
+    ScheduleRealEstateComplete 
+} from '../schema/schudulesUsersProperties.schema'
 import { z } from 'zod'
 
 type IscheduleReturn = z.infer<typeof ScheduleSchema>

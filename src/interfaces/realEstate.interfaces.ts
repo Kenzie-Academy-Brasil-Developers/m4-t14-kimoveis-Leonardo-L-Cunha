@@ -1,4 +1,10 @@
-import { RealEstateSchema, CreateRealEstateSchema, CompleteRealEstateSchema, ReturnCompleteRealEstateSchema, RealEstateWithAddress } from '../schema/realEstate.schema'
+import { 
+    RealEstateSchema, 
+    CreateRealEstateSchema, 
+    CompleteRealEstateSchema, 
+    ReturnCompleteRealEstateSchema, 
+    RealEstateWithAddress 
+} from '../schema/realEstate.schema'
 import { z } from 'zod'
 
 type IrealEstateReturn = z.infer<typeof RealEstateSchema>

@@ -7,7 +7,6 @@ const loginController = async(req:Request, res:Response): Promise<Response> => {
 
     const token = await loginServices(loginData)
 
-
     return res.status(200).json({
         token: token
     })

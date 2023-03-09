@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { IeditUsers, IuserCreate, IuserReturn } from '../interfaces/users.interfaces'
+import { IeditUsers, IuserCreate } from '../interfaces/users.interfaces'
 import createUsersServices from '../services/users/createUsers.service'
 import deleteUsersServices from '../services/users/deleteUsers.service'
 import listUsersServices from '../services/users/listUsers.service'
@@ -21,7 +21,6 @@ const listUsersControllers = async(req: Request, res:Response):Promise<Response>
 }
 
 const updateUsersControllers = async(req: Request, res:Response):Promise<Response> => {
-
     const id :number = parseInt(req.params.id)
     const dataBody:IeditUsers = req.body
 

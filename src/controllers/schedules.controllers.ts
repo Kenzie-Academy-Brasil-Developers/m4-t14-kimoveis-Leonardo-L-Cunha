@@ -18,6 +18,7 @@ const listScheduleController = async(req:Request, res:Response):Promise<Response
     const idRealEstate = parseInt(req.params.id)
 
     const listSchedule = await listScheduleService(idRealEstate)
+    
     return res.json(listSchedule)
 }
 

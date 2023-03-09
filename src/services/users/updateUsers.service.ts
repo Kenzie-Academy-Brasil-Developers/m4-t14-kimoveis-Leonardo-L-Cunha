@@ -7,8 +7,6 @@ import { returnUserSchema, UpdateUsersShema } from '../../schema/users.schema'
 
 const updateUsersServices = async(dataBody:IeditUsers, idUser:number):Promise<IuserReturn> => {
 
-    
-    
     const userRepository:Repository<User> = AppDataSource.getRepository(User)
 
     const findUser = await userRepository.findOne({
@@ -17,8 +15,6 @@ const updateUsersServices = async(dataBody:IeditUsers, idUser:number):Promise<Iu
         }
     })
     
-   
-
     const updatedUser = userRepository.create({
         ...findUser,
         ...dataBody

@@ -1,4 +1,9 @@
-import { CategoriesSchema, CreateCategoriesSchema, RealEstatePerCategory, ReturnAllCategories } from '../schema/categories.schema'
+import { 
+    CategoriesSchema, 
+    CreateCategoriesSchema, 
+    RealEstatePerCategory, 
+    ReturnAllCategories
+}from '../schema/categories.schema'
 import { z } from 'zod'
 
 type IcategoriesReturn = z.infer<typeof CategoriesSchema>

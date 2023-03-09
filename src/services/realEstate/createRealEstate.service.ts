@@ -4,8 +4,6 @@ import { Address, Category, RealEstate } from '../../entities'
 import { AppError } from '../../error'
 import { IaddressesCreate } from '../../interfaces/addresses.interfaces'
 import { IcompleteRealEstate, IreturnCompleteRealEstate } from '../../interfaces/realEstate.interfaces'
-import { CompleteRealEstateSchema, ReturnCompleteRealEstateSchema } from '../../schema/realEstate.schema'
-
 
 const createRealEstateService = async(realEstateData:IcompleteRealEstate):Promise<IreturnCompleteRealEstate> => {
   
