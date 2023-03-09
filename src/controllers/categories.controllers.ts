@@ -1,7 +1,8 @@
 import { Request, Response } from 'express'
 import { IcategoriesCreate } from '../interfaces/categories.interfaces'
-import createCategoriesServices from '../services/categories/createCategories.services'
-import listCategoriesServices from '../services/categories/listCategories.services'
+import createCategoriesServices from '../services/categories/createCategories.service'
+import listCategoriesServices from '../services/categories/listCategories.service'
+import listRealEstatePerCategoriesService from '../services/categories/listRealEstatePerCategories.service'
 
 const createCategoriesController = async(req:Request, res:Response):Promise<Response> => {
     const categoryDate:IcategoriesCreate = req.body
@@ -17,8 +18,13 @@ const listCategoriesController = async (req:Request, res:Response):Promise<Respo
 
     return res.json(listCategories)
 }
-
+const listRealEstatePerCategories = async (req:Request, res:Response):Promise<Response> => {
+    const listRealEstatePerCategories = await listRealEstatePerCategoriesService(parseInt(req.params.id))
+    
+    return res.json(listRealEstatePerCategories)
+}
 export {
     createCategoriesController,
-    listCategoriesController
+    listCategoriesController,
+    listRealEstatePerCategories
 }

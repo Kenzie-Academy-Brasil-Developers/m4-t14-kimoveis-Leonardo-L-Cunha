@@ -1,6 +1,8 @@
-import { Entity, Column ,  PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToOne, JoinColumn, ManyToOne } from 'typeorm'
+import { Entity, Column ,  PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToOne, JoinColumn, ManyToOne, OneToMany } from 'typeorm'
+import { nullable } from 'zod'
 import  Addresses  from './addresses.entities'
 import  Categories  from './categories.entities'
+import Schedule from './schedulesUsersProperties.entities'
 
 @Entity('real_estate')
 class RealEstate {
@@ -24,10 +26,13 @@ class RealEstate {
 
     @OneToOne(()=> Addresses)
     @JoinColumn()
-    addresses: Addresses
+    address: Addresses
 
-    @ManyToOne(() => Categories)
+    @ManyToOne(() => Categories,categories => categories.realEstate ,{nullable: true})
     category: Categories
+
+    @OneToMany(()=> Schedule, schedule => schedule.realEstate)
+    schedules:Schedule[]
 }
 
 export default RealEstate

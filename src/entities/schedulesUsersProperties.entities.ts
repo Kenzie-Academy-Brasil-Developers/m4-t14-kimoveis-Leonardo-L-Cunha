@@ -7,16 +7,16 @@ class Schedule{
     @PrimaryGeneratedColumn('increment')
     id: number
 
-    @Column()
-    date: Date
+    @Column({type:'date'})
+    date: string
 
-    @Column()
-    hour: Date
+    @Column({type:'time'})
+    hour: string
 
-    @ManyToOne(() => RealEstate)
+    @ManyToOne(() => RealEstate ,realEstate => realEstate.schedules)
     realEstate: RealEstate
 
-    @ManyToOne(() => Users)
+    @ManyToOne(() => Users, users => users.schedule)
     user: Users
 }
 

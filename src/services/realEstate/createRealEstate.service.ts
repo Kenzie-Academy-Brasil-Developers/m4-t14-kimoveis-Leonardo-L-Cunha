@@ -2,6 +2,7 @@ import { Repository } from 'typeorm'
 import { AppDataSource } from '../../data-source'
 import { Address, Category, RealEstate } from '../../entities'
 import { AppError } from '../../error'
+import { IaddressesCreate } from '../../interfaces/addresses.interfaces'
 import { IcompleteRealEstate, IreturnCompleteRealEstate } from '../../interfaces/realEstate.interfaces'
 import { ReturnCompleteRealEstateSchema } from '../../schema/realEstate.schema'
 
@@ -14,16 +15,24 @@ const createRealEstateService = async(realEstateData:IcompleteRealEstate):Promis
     }
 
     const category = realEstateData.categoryId
-    
 
-    const address = {
-        number: realEstateData.address.number,
+    let address:IaddressesCreate = {
         street: realEstateData.address.street,
         zipCode: realEstateData.address.zipCode,
         city: realEstateData.address.city,
         state: realEstateData.address.state
-        
     }
+    
+    if(realEstateData.address.number){
+        address = {
+            number: realEstateData.address.number,
+            street: realEstateData.address.street,
+            zipCode: realEstateData.address.zipCode,
+            city: realEstateData.address.city,
+            state: realEstateData.address.state
+        }
+    }
+   
 
     const categoryRepository:Repository<Category> = AppDataSource.getRepository(Category)
 
@@ -47,7 +56,7 @@ const createRealEstateService = async(realEstateData:IcompleteRealEstate):Promis
 
     const newRealEstate:RealEstate = realEstateRepository.create({
         ...realEstate,
-        addresses: newAddres,
+        address: newAddres,
         category:findCategory
     })
     
@@ -56,15 +65,16 @@ const createRealEstateService = async(realEstateData:IcompleteRealEstate):Promis
     const completeRealEstate = {
         ...newRealEstate,
         category : {
+            id: findCategory.id,
             name: findCategory.name
         },
         address: newAddres
 
     }
-
+    
     const returnCompleteRealEstate = ReturnCompleteRealEstateSchema.parse(completeRealEstate) 
 
-
+    
     return returnCompleteRealEstate
 
 }

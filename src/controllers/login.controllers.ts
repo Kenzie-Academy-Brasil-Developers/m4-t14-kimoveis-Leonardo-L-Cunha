@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { Ilogin } from '../interfaces/login.interfaces'
-import loginServices from '../services/login/login.services'
+import loginServices from '../services/login/login.service'
 
 const loginController = async(req:Request, res:Response): Promise<Response> => {
     const loginData:Ilogin = req.body

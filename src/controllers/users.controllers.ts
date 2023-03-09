@@ -1,9 +1,9 @@
 import { Request, Response } from 'express'
 import { IeditUsers, IuserCreate, IuserReturn } from '../interfaces/users.interfaces'
-import createUsersServices from '../services/users/createUsers.services'
-import deleteUsersServices from '../services/users/deleteUsers.services'
-import listUsersServices from '../services/users/listUsers.services'
-import updateUsersServices from '../services/users/updateUsers.services'
+import createUsersServices from '../services/users/createUsers.service'
+import deleteUsersServices from '../services/users/deleteUsers.service'
+import listUsersServices from '../services/users/listUsers.service'
+import updateUsersServices from '../services/users/updateUsers.service'
 
 const createUsersControllers = async(req:Request,  res:Response):Promise<Response> => {
     const dataBody:IuserCreate = req.body

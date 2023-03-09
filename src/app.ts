@@ -4,6 +4,7 @@ import { handleErros } from './error'
 import categoriesRoutes from './routers/categories.routes'
 import loginRoutes from './routers/login.routes'
 import realEstateRoutes from './routers/realEstate.routes'
+import schedulesRoutes from './routers/schedules.routes'
 import userRoutes from './routers/users.routes'
 
 const app:Application = express()
@@ -13,6 +14,7 @@ app.use('/users',userRoutes)
 app.use('/login',loginRoutes)
 app.use('/categories',categoriesRoutes)
 app.use('/realEstate',realEstateRoutes)
+app.use('/schedules',schedulesRoutes)
 
 app.use(handleErros)
 
